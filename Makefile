@@ -6,42 +6,28 @@
 #    By: hgabriel <hgabriel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 17:25:36 by hgabriel          #+#    #+#              #
-#    Updated: 2022/06/16 17:27:25 by hgabriel         ###   ########.fr        #
+#    Updated: 2022/06/16 20:43:17 by hgabriel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= ${EXE}
+NAME		= pipex
 
-SRCS 		=  $(addprefix (SRCSDIR), *.c)
+SRCS 		= $(wildcard srcs/*.c)
 
+INCLUDES	= -Iincludes
 SRCSDIR		= srcs/
 OBJSDIR 	= obj/
-
 OBJS 		= $(addprefix $(OBJSDIR), ${SRCS:.c=.o})
-
-EXE			= pipex
-LIBFT		= libft/
-INCLUDES	= includes
-
-CC			= gcc
+COMPILER	= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
-all: ${NAME}
+all: 			${NAME}
 
-${NAME}: ${OBJS}
-	make re -C ${LIBFT}
-	ar rcs ${LIB} ${OBJS} ${LIBFT}*.o
+${NAME}: 		${OBJS}
 
-$(OBJSDIR)%.o: $(SRCSDIR)%.c
-	@mkdir -p $(OBJSDIR)
-	${CC} ${CFLAGS} -I ${INCLUDES} -c $< -o $@
+$(OBJSDIR)%.o:	 $(SRCSDIR)%.c
+	@mkdir -p ${OBSJDIR}
+	${COMPILER} ${CFLAGS} ${INCLUDES} -c $< -o $^
 
-clean:
-	rm -rf ${OBJSDIR}
 
-fclean: clean
-	rm -f ${LIB}
-
-re: fclean all
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
