@@ -6,24 +6,22 @@
 /*   By: hgabriel <hgabriel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 16:55:54 by hgabriel          #+#    #+#             */
-/*   Updated: 2022/06/16 20:16:27 by hgabriel         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:01:45 by hgabriel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "includes/pipex.h"
 
-int main(int argc,char *argv[])
+void pipex(int fdrd, int fdwr, char *argv[], char *envp[])
 {
- //   int     fd[2];
- //   char    buffer[1024];
+    
+}
 
-    if (argc != 5)
-    {
-        ft_putstr_fd("4 Arguments only! No more. No less.", 1);
-    }
-    else
-    {
-        printf("%s %s %s %s", argv[0], argv[1], argv[2], argv[3]);
-    }
-    return (0);
+
+int main(int argc,char *argv[], char *envp[])
+{
+    const int fdin = open(argv[1], O_RDONLY);
+    const int fdout = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+    
+
 }
