@@ -6,13 +6,13 @@
 #    By: hgabriel <hgabriel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 17:25:36 by hgabriel          #+#    #+#              #
-#    Updated: 2022/06/21 07:55:06 by hgabriel         ###   ########.fr        #
+#    Updated: 2022/06/23 20:09:07 by hgabriel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= pipex
 
-SRCS		= $(wildcard srcs/*.c)
+SRCS		= $(wildcard *.c)
 GCC 		= gcc -Wall -Wextra -Werror
 SRCSDIR 	= ${addprefix srcs/${SRCS}}
 
