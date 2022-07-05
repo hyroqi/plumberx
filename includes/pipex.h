@@ -6,7 +6,7 @@
 /*   By: hgabriel <hgabriel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 17:16:54 by hgabriel          #+#    #+#             */
-/*   Updated: 2022/06/21 13:46:35 by hgabriel         ###   ########.fr       */
+/*   Updated: 2022/07/06 04:39:07 by hgabriel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <sys/wait.h>
+# include "../libft/libft.h"
 
-void	ft_putstr_fd(char *s, int fd);
+void    dupnclose(int in, int out)
+
 
 #endif

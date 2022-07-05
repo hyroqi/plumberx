@@ -6,24 +6,57 @@
 #    By: hgabriel <hgabriel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 17:25:36 by hgabriel          #+#    #+#              #
-#    Updated: 2022/06/23 20:09:07 by hgabriel         ###   ########.fr        #
+#    Updated: 2022/07/06 04:05:06 by hgabriel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= pipex
-
-SRCS		= $(wildcard *.c)
 GCC 		= gcc -Wall -Wextra -Werror
-SRCSDIR 	= ${addprefix srcs/${SRCS}}
+
+# MANDATORY
+SRCS		= pipex.c \
+			  pipex_utils.c 
+SRCSDIR		= srcs/
+OBJS		= ${SRCS:.c=.o}
+OBJSDIR		= objs/
+
+# BONUS
+SRCBONUS = pipex_bonus.c \
+		   pipex_utils.c \
+		   pipex_bonus_utils.c 
+OBJSBONUS = ${SRCBONUS:.c=.o}
+MAINBONUS = srcs/pipex_bonus.c
+
+# LIBFT
+LIBFT_A	 = libft.a
+LIBFTDIR = libft/
+LIBFT 	 = $(addprefix $(LIBFTDIR), $(LIBFT_A))
+
+INCLUDES = -Iincludes
+
+
+
+
+
 
 all	:	${NAME}
 
-${NAME}	:
-	gcc ${SRCS} pipex.c -o ${NAME}
+${NAME}:
+	mkdir -p $(OBJSDIR)
+	$(CC) -c $(addprefix $(SRCSDIR), $(SRCS))
+	mv $(OBJS) $(OBJSDIR)
+	make -C ${LIBFTDIR}
+	$(CC) $(LIBFT) $(addprefix $(OBJSDIR), $(OBJS)) -o $(NAME)
 
 clean:
-	rm -rf ${NAME}
+	make clean -c ${LIBFTDIR}
+	rm -rf $(OBJSDIR)
+	rm -f ${OBJS} ${OBJSBONUS}
 
-re: fclean all
+fclean: clean
+	make -c $(LIBFTDIR) fclean
+	rm -f $(NAME)
 
-.PHONY: all clean re
+re:		fclean all
+
+.PHONY: all clean fclean re
