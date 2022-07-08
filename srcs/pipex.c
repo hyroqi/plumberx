@@ -6,7 +6,7 @@
 /*   By: hgabriel <hgabriel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 16:55:54 by hgabriel          #+#    #+#             */
-/*   Updated: 2022/07/09 04:20:53 by hgabriel         ###   ########.fr       */
+/*   Updated: 2022/07/09 04:31:13 by hgabriel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ int	main(int argc, char *argv[], char *envp[])
 	if (pid == -1)
 		perror("Failed to fork");
 	if (pid == 0)
-		childPeon(argv, envp, plumber);
+		childpeon(argv, envp, plumber);
 	else
 	{
 		waitpid(pid, NULL, 0);
-		parentPeon(argv, envp, plumber);
+		parentpeon(argv, envp, plumber);
 	}
 	return (0);
 }
