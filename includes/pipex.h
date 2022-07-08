@@ -6,7 +6,7 @@
 /*   By: hgabriel <hgabriel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 17:16:54 by hgabriel          #+#    #+#             */
-/*   Updated: 2022/07/09 03:42:54 by hgabriel         ###   ########.fr       */
+/*   Updated: 2022/07/09 04:17:52 by hgabriel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <sys/syscall.h>
 # include "../libft/libft.h"
 
-void    replacefd(int in, int out);
-char    **pathfinder(char *pathpath, char *cmd);
+void	replacefd(int in, int out);
+char	**pathfinder(char *pathpath, char *cmd);
 char	**ft_split(char const *s, char c);
 size_t	ft_count(char const *str, char c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n);

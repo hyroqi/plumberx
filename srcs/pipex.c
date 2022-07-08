@@ -6,18 +6,18 @@
 /*   By: hgabriel <hgabriel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 16:55:54 by hgabriel          #+#    #+#             */
-/*   Updated: 2022/07/09 04:09:00 by hgabriel         ###   ########.fr       */
+/*   Updated: 2022/07/09 04:20:53 by hgabriel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void childPeon(char *argv[], char *envp[], int *plumber)
+void	childpeon(char *argv[], char *envp[], int *plumber)
 {
-	int 		fdrd;
+	int			fdrd;
 	char		**path;
 	char		**cmd;
-    int			i;
+	int			i;
 
 	i = 0;
 	close(plumber[0]);
@@ -26,7 +26,7 @@ void childPeon(char *argv[], char *envp[], int *plumber)
 	replacefd(fdrd, 0);
 	cmd = ft_split(argv[2], ' ');
 	while (!ft_strnstr(envp[i], "PATH", 4))
-    	i++;
+		i++;
 	path = pathfinder(envp[i], cmd[0]);
 	i = 0;
 	while (path[i])
@@ -37,12 +37,12 @@ void childPeon(char *argv[], char *envp[], int *plumber)
 	perror("Execve Failed.\n");
 }
 
-void parentPeon(char *argv[], char *envp[], int *plumber)
+void	parentpeon(char *argv[], char *envp[], int *plumber)
 {
-	int 		fdwr;
+	int			fdwr;
 	char		**path;
 	char		**cmd;
-    int			i;
+	int			i;
 
 	i = 0;
 	close(plumber[1]);
@@ -51,7 +51,7 @@ void parentPeon(char *argv[], char *envp[], int *plumber)
 	replacefd(fdwr, 1);
 	cmd = ft_split(argv[3], ' ');
 	while (!ft_strnstr(envp[i], "PATH", 4))
-    	i++;
+		i++;
 	path = pathfinder(envp[i], cmd[0]);
 	i = 0;
 	while (path[i])
@@ -62,16 +62,17 @@ void parentPeon(char *argv[], char *envp[], int *plumber)
 	perror("Execve Failed.\n");
 }
 
-int main(int argc,char *argv[], char *envp[])
+int	main(int argc, char *argv[], char *envp[])
 {
-	int plumber[2];
-	int pid;
+	int	plumber[2];
+	int	pid;
 
 	if (argc != 5)
 		perror("4 Argumemts not given.\n");
 	if (pipe(plumber) != 0)
 		printf("Failed to pipe\n");
-	if ((pid = fork()) == -1)
+	pid = fork();
+	if (pid == -1)
 		perror("Failed to fork");
 	if (pid == 0)
 		childPeon(argv, envp, plumber);
@@ -80,5 +81,5 @@ int main(int argc,char *argv[], char *envp[])
 		waitpid(pid, NULL, 0);
 		parentPeon(argv, envp, plumber);
 	}
-	return(0);
+	return (0);
 }
