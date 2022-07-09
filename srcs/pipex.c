@@ -6,7 +6,7 @@
 /*   By: hgabriel <hgabriel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 16:55:54 by hgabriel          #+#    #+#             */
-/*   Updated: 2022/07/09 16:35:20 by hgabriel         ###   ########.fr       */
+/*   Updated: 2022/07/09 17:24:24 by hgabriel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	main(int argc, char *argv[], char *envp[])
 	if (argc != 5)
 		perror("4 Argumemts not given.\n");
 	if (pipe(plumber) != 0)
-		printf("Failed to pipe\n");
+		perror("Failed to pipe\n");
 	pid = fork();
 	if (pid == -1)
 		perror("Failed to fork");
