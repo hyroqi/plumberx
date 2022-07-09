@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgabriel <hgabriel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/09 03:34:57 by hgabriel          #+#    #+#             */
-/*   Updated: 2022/07/09 05:14:45 by hgabriel         ###   ########.fr       */
+/*   Created: 2022/07/09 16:35:44 by hgabriel          #+#    #+#             */
+/*   Updated: 2022/07/09 16:37:39 by hgabriel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
+char	*ft_strdup(const char *s)
 {
 	size_t	i;
-	size_t	j;
+	size_t	size;
+	char	*ptr;
 
 	i = 0;
-	if (*needle == '\0')
-		return ((char *)haystack);
-	while (haystack[i] != '\0' && i < n)
+	size = ft_strlen(s) + 1;
+	ptr = (char *)malloc(size * sizeof(char));
+	if (!ptr)
+		return (0);
+	while (s[i] != '\0')
 	{
-		j = 0;
-		while (haystack[i + j] == needle [j] && needle[j] != '\0' && j + i < n)
-			j++;
-		if (j == (size_t)ft_strlen(needle))
-			return ((char *)&haystack[i]);
+		ptr[i] = s[i];
 		i++;
 	}
-	return (0);
+	ptr[i] = '\0';
+	return (ptr);
 }

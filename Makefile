@@ -6,7 +6,7 @@
 #    By: hgabriel <hgabriel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 17:25:36 by hgabriel          #+#    #+#              #
-#    Updated: 2022/07/09 03:45:38 by hgabriel         ###   ########.fr        #
+#    Updated: 2022/07/09 16:39:17 by hgabriel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS		= pipex.c \
 			  ft_strnstr.c \
 			  ft_strchr.c \
 			  ft_strjoin.c \
-			  ft_strlen.c 
+			  ft_strlen.c \
+			  ft_strdup.c
 SRCSDIR		= srcs/
 OBJS		= ${SRCS:.c=.o}
 OBJSDIR		= objs/
